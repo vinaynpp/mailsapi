@@ -1,5 +1,7 @@
 def main():
-    print("heyyyyyyyyyy")
+    while True:
+        print("heyyyyyyyyyy")
+
 
 
 if __name__ == '__main__':
