@@ -1,6 +1,9 @@
 import os
 import time
-from mark1 import bhejo
+
+import yagmail
+
+import mark1
 
 from flask import Flask, request, jsonify
 
@@ -10,38 +13,62 @@ app = Flask(__name__)
 @app.route('/getmsg/', methods=['GET'])
 def respond():
     # Retrieve the name from url parameter
+
+    username = request.args.get("username", None)
+    meraemail = request.args.get("meraemail", None)
+    merapswd = request.args.get("merapswd", None)
     email = request.args.get("email", None)
-    password = request.args.get("password", None)
+    subject = request.args.get("subject", None)
+    contents = request.args.get("contents", None)
 
     # For debugging
+    print(f"got name {username}")
+    print(f"got name {meraemail}")
+    print(f"got name {merapswd}")
     print(f"got name {email}")
-    print(f"got name {password}")
+    print(f"got name {subject}")
+    print(f"got name {contents}")
 
     response = {}
 
     # Check if user sent a name at all
-    if not password:
+    if not meraemail:
         response["ERROR"] = "no password found, please send a password."
     # Check if the user entered a number not a name
     elif str(email).isdigit():
         response["ERROR"] = "{email}can't be numeric."
     # Now the user entered a valid name
     else:
-        response["MESSAGE"] = f"Welcome {email} with password {password} to our awesome platform!!"
+        print("")
+        print("LET'S START")
+
+        yagmail.register(meraemail, merapswd)
+
+        print("")
+        print("loggedin")
+
+        with yagmail.SMTP(meraemail) as yag:
+            yag.send(email, subject, contents)
+
+        print("")
+        print("TASK SUCCESSFULLY COMPLETED")
+
+        response["MESSAGE"] = f"Welcome {meraemail} with password {merapswd} to our awesome platform!!"
 
     # Return the response in json format
+
     return jsonify(response)
 
 
 @app.route('/post/', methods=['POST'])
 def post_something():
-    param = request.form.get('name')
+    param = request.form.get('contents')
     print(param)
     # You can add the test cases you made in the previous function, but in our case here you are just testing the
     # POST functionality
     if param:
         return jsonify({
-            "Message": f"Welcome {name} to our awesome platform!!",
+            "Message": f"Welcome  to our awesome platform!!",
             # Add this option to distinct the POST request
             "METHOD": "POST"
         })
