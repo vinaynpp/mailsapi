@@ -12,4 +12,4 @@ def hello():
 
 
 if __name__ == '__main__':
-    app.run(host='mailsapi.herokuapp.com')
+    app.run()
