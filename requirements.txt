@@ -6,7 +6,9 @@ gunicorn==20.0.4
 idna==2.10
 itsdangerous==1.1.0
 Jinja2==2.11.2
+keyring==21.4.0
 MarkupSafe==1.1.1
+pywin32-ctypes==0.2.0
 requests==2.24.0
 urllib3==1.25.10
 waitress==1.4.4
