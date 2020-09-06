@@ -1,10 +1,11 @@
 import time
+from mark1 import bhejo
 
+from flask import Flask
+app=Flask(__name__)
 
-def main():
-    print("heyyyyyyyyyy let's start")
-
-
-
-if __name__ == '__main__':
-    main()
+@app.route('/')
+def hello():
+    return 'hellllooooooo'
+if __name__ =='__main__':
+    app.run()
