@@ -40,19 +40,7 @@ def respond():
         response["ERROR"] = "{email}can't be numeric."
     # Now the user entered a valid name
     else:
-        print("")
-        print("LET'S START")
-
-        yagmail.register(meraemail, merapswd)
-
-        print("")
-        print("loggedin")
-
-        with yagmail.SMTP(meraemail) as yag:
-            yag.send(email, subject, contents)
-
-        print("")
-        print("TASK SUCCESSFULLY COMPLETED")
+        mark1.bhejo(meraemail, merapswd, email, subject, contents)
 
         response["MESSAGE"] = f"Welcome {meraemail} with password {merapswd} to our awesome platform!!"
 
