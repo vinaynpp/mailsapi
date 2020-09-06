@@ -10,22 +10,24 @@ app = Flask(__name__)
 @app.route('/getmsg/', methods=['GET'])
 def respond():
     # Retrieve the name from url parameter
-    name = request.args.get("name", None)
+    email = request.args.get("email", None)
+    password = request.args.get("password", None)
 
     # For debugging
-    print(f"got name {name}")
+    print(f"got name {email}")
+    print(f"got name {password}")
 
     response = {}
 
     # Check if user sent a name at all
-    if not name:
-        response["ERROR"] = "no name found, please send a name."
+    if not password:
+        response["ERROR"] = "no password found, please send a password."
     # Check if the user entered a number not a name
-    elif str(name).isdigit():
-        response["ERROR"] = "name can't be numeric."
+    elif str(email).isdigit():
+        response["ERROR"] = "{email}can't be numeric."
     # Now the user entered a valid name
     else:
-        response["MESSAGE"] = f"Welcome {name} to our awesome platform!!"
+        response["MESSAGE"] = f"Welcome {email} with password {password} to our awesome platform!!"
 
     # Return the response in json format
     return jsonify(response)
