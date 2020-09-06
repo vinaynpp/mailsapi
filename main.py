@@ -60,4 +60,4 @@ if __name__ == '__main__':
     app.run()
     app.debug = True
     app.run()
-    app.run(port=port, debug=True)
+    app.run(threaded=True, port=port, debug=True)
