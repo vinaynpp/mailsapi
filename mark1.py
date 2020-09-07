@@ -13,7 +13,7 @@ def bhejo(meraemail, merapswd, email, subject, contents):
     print("")
     print("loggedin")
 
-    with yagmail.SMTP(meraemail, 'oauth2_creds.json') as yag:
+    with yagmail.SMTP(meraemail) as yag:
         yag.send(email, subject, contents)
 
     print("")
