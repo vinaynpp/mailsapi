@@ -15,7 +15,7 @@ app = Flask(__name__)
 def respond():
     # Retrieve the name from url parameter
 
-    username = request.args.get("username", None)
+
     meraemail = request.args.get("meraemail", None)
     merapswd = request.args.get("merapswd", None)
     email = request.args.get("email", None)
@@ -23,7 +23,7 @@ def respond():
     contents = request.args.get("contents", None)
 
     # For debugging
-    print(f"got name {username}")
+
     print(f"got name {meraemail}")
     print(f"got name {merapswd}")
     print(f"got name {email}")
