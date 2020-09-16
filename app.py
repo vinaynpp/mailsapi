@@ -9,6 +9,8 @@ from checknaka import dekh
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
 
+
+
 @app.route('/portal/', methods=['GET', 'POST'])
 def takeform():
     if request.method == 'GET':
