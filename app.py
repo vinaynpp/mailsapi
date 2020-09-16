@@ -5,7 +5,6 @@ import mark1
 from flask import Flask, request, jsonify, render_template
 
 from checknaka import dekh
-from flask import url_for
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
@@ -39,7 +38,6 @@ def takeform():
     response["subject"] = f'{dekh(subject)}'
     response["contents"] = dekh(contents)
 
-
     # Check if user sent a name at all
     if not meraemail:
         response["ERROR"] = "no password found, please send a password."
@@ -59,7 +57,6 @@ def takeform():
 
 @app.route('/json/', methods=['GET', 'POST'])
 def takejson():
-
     name = request.args.get("name", None)
     meraemail = request.args.get("meraemail", None)
     merapswd = request.args.get("merapswd", None)
