@@ -12,6 +12,6 @@ MarkupSafe==1.1.1
 pywin32-ctypes==0.2.0
 requests==2.24.0
 urllib3==1.25.10
-waitress==1.4.4
+waitress==2.1.1
 Werkzeug==1.0.1
 yagmail==0.11.224
